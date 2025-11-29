@@ -1,8 +1,7 @@
 {
     "files.exclude": {
-        "node_modules": true,
         ".vscode": true,
-        "public": true,
-        "scss": true
+        "src": true,
+        "node_modules": true
     }
 }
