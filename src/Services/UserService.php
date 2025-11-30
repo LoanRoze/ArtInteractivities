@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__ . '/../Models/User.php';
-require_once __DIR__ . '/../errors/BadRequestException.php';
-require_once __DIR__ . '/../errors/ConflictException.php';
-require_once __DIR__ . '/../errors/NotFoundException.php';
+require_once __DIR__ . '\..\Models\User.php';
+require_once __DIR__ . '\..\Exception\BadRequestException.php';
+require_once __DIR__ . '\..\Exception\ConflictException.php';
+require_once __DIR__ . '\..\Exception\NotFoundException.php';
 
 class UserService
 {
@@ -13,8 +13,14 @@ class UserService
         $this->userModel = new User();
     }
 
-    public function registerUser($email, $password, $stay_connected, $newsletter, $accept_cgu)
+    public function registerUser($data): array
     {
+        $email = $data['email'] ?? null;
+        $password = $data['password'] ?? null;
+        $stay_connected = $data['stay_connected'] ?? null;
+        $newsletter = $data['newsletter'] ?? null;
+        $accept_cgu = $data['accept_cgu'] ?? null;
+
         if (!$email || !$password || $stay_connected === null || $newsletter === null || $accept_cgu === null) {
             throw new BadRequestException("Tous les champs sont requis");
         }
@@ -30,7 +36,7 @@ class UserService
         return $this->getUserById($id);
     }
 
-    public function getUserById($id)
+    public function getUserById($id): array
     {
         $user = $this->userModel->getById($id);
         if (!$user)
@@ -41,7 +47,7 @@ class UserService
         ];
     }
 
-    public function getUserByEmail($email)
+    public function getUserByEmail($email): array
     {
         foreach ($this->userModel->getAll() as $user) {
             if ($user['email'] === $email) {
@@ -54,7 +60,7 @@ class UserService
         throw new NotFoundException("Utilisateur non trouvé");
     }
 
-    public function updateUserEmail($id, $newEmail)
+    public function updateUserEmail($id, $newEmail): array
     {
         if (!$newEmail)
             throw new BadRequestException("Email requis");
@@ -73,7 +79,7 @@ class UserService
         return $this->getUserById($id);
     }
 
-    public function deleteUser($id)
+    public function deleteUser($id): bool
     {
         $user = $this->userModel->getById($id);
         if (!$user)
@@ -81,7 +87,7 @@ class UserService
         return $this->userModel->delete($id);
     }
 
-    public function getAllUsers()
+    public function getAllUsers(): array
     {
         $users = $this->userModel->getAll();
         $formatted = [];
