@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__ . '/../Models/Company.php';
-require_once __DIR__ . '/../errors/BadRequestException.php';
-require_once __DIR__ . '/../errors/ConflictException.php';
-require_once __DIR__ . '/../errors/NotFoundException.php';
+require_once __DIR__ . '\..\Models\Company.php';
+require_once __DIR__ . '\..\Exception\BadRequestException.php';
+require_once __DIR__ . '\..\Exception\ConflictException.php';
+require_once __DIR__ . '\..\Exception\NotFoundException.php';
 
 class CompanyService {
     private $companyModel;
@@ -11,7 +11,13 @@ class CompanyService {
         $this->companyModel = new Company();
     }
 
-    public function addCompany($raison_sociale, $siret, $prenom_contact, $nom_contact, $infos_complementaires) {
+    public function addCompany($data): array {
+        $raison_sociale = $data['raison_sociale'] ?? null;
+        $siret = $data['siret'] ?? null;
+        $prenom_contact = $data['prenom_contact'] ?? null;
+        $nom_contact = $data['nom_contact'] ?? null;
+        $infos_complementaires = $data['infos_complementaires'] ?? null;
+
         if (!$raison_sociale || !$siret || !$prenom_contact || !$nom_contact || !$infos_complementaires) {
             throw new BadRequestException("Tous les champs sont requis");
         }
@@ -26,7 +32,7 @@ class CompanyService {
         return $this->getCompanyById($id);
     }
 
-    public function getCompanyById($id) {
+    public function getCompanyById($id): array {
         $company = $this->companyModel->getById($id);
         if (!$company) throw new NotFoundException("Entreprise non trouvée");
         return [
@@ -36,14 +42,14 @@ class CompanyService {
         ];
     }
 
-    public function getCompanyBySiret($siret) {
+    public function getCompanyBySiret($siret): array {
         foreach($this->companyModel->getAll() as $company) {
             if($company['siret'] === $siret) return $this->getCompanyById($company['id']);
         }
         throw new NotFoundException("Entreprise non trouvée");
     }
 
-    public function updateCompanyRaisonSociale($id, $newRaison) {
+    public function updateCompanyRaisonSociale($id, $newRaison): array {
         if (!$newRaison) throw new BadRequestException("Raison sociale requise");
         $company = $this->companyModel->getById($id);
         if (!$company) throw new NotFoundException("Entreprise non trouvée");
@@ -51,13 +57,13 @@ class CompanyService {
         return $this->getCompanyById($id);
     }
 
-    public function deleteCompany($id) {
+    public function deleteCompany($id): bool {
         $company = $this->companyModel->getById($id);
         if (!$company) throw new NotFoundException("Entreprise non trouvée");
         return $this->companyModel->delete($id);
     }
 
-    public function getAllCompanies() {
+    public function getAllCompanies(): array {
         $companies = $this->companyModel->getAll();
         $formatted = [];
         foreach($companies as $company) {

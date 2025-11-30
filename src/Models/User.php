@@ -18,13 +18,13 @@ class User
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->execute([
-            ':email' => $email,
-            ':password_hash' => $password_hash,
-            ':stay_connected' => $stay_connected,
-            ':newsletter' => $newsletter,
-            ':accept_cgu' => $accept_cgu
-        ]);
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':password_hash', $password_hash);
+        $stmt->bindValue(':stay_connected', $stay_connected ? 1 : 0, PDO::PARAM_INT);
+        $stmt->bindValue(':newsletter', $newsletter ? 1 : 0, PDO::PARAM_INT);
+        $stmt->bindValue(':accept_cgu', $accept_cgu ? 1 : 0, PDO::PARAM_INT);
+
+        $stmt->execute();
 
         return $this->pdo->lastInsertId();
     }
