@@ -1,0 +1,15 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == md {
+    @media (min-width: $break-md) { @content; }
+  }
+  @if $breakpoint == lg {
+    @media (min-width: $break-lg) { @content; }
+  }
+}
+
+@mixin card {
+  background: white;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  box-shadow: $shadow;
+}
