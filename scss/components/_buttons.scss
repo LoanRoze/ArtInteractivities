@@ -1,0 +1,37 @@
+
+.btn {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+
+  &--primary {
+    background: $color-primary;
+    color: $color-light;
+    border: 1px solid $color-primary;
+
+    &:hover {
+      background: $color-primary-light;
+    }
+  }
+
+  &--secondary {
+    background: $color-light;
+    color: $color-text;
+    border: 1px solid $color-border;
+  }
+}
+
+.link-button {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
