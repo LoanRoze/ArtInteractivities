@@ -1,0 +1,12 @@
+.line {
+    &__vertical {
+        min-width: 1px;
+        min-height: 100%;
+        background-color: $color-line;
+    }
+    &__horizontal {
+        min-width: 100%;
+        min-height: 1px;
+        background-color: $color-line;
+    }
+}

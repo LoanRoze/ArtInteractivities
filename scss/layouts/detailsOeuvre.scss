@@ -1,0 +1,320 @@
+#DetailsOeuvre {
+  margin: 2rem 4rem;
+
+  .top-nav {
+    width: 100%;
+
+    &__menu {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &__link {
+      line-height: 1.5rem;
+      text-decoration: none;
+      color: $color-dark;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.5rem 2rem;
+      border-bottom: 1px solid $color-line;
+
+      &--active {
+        border-bottom: 2px solid $color-primary;
+        color: $color-primary;
+      }
+    }
+  }
+
+  main {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    margin-top: 2rem;
+
+    .main-content {
+      width: 70%;
+    }
+
+    .artwork-details {
+      width: 30%;
+    }
+
+    /* ===========================
+       GALERIE (IMAGE + THUMBS)
+    =========================== */
+    .artwork-image {
+      display: flex;
+      width: 100%;
+
+      /* --- Colonne des miniatures --- */
+      .gallery-thumbs {
+        width: 15%;
+        margin-right: 10%;
+
+        .arrow-container {
+          width: 50%;
+          padding: 0 50%;
+          cursor: pointer;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .thumbs {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.1rem;
+
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: $radius;
+            cursor: pointer;
+          }
+        }
+      }
+
+      /* --- Image principale --- */
+      .gallery-main {
+        width: 65%;
+
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: $radius;
+        }
+
+        &__footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 2rem;
+
+          .icons {
+            display: flex;
+            height: 100%;
+
+            .icon-button {
+              display: block;
+              height: 100%;
+
+              img {
+                display: block;
+                max-height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .about-section {
+      margin-top: 3rem;
+
+      &__title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: $color-dark;
+      }
+
+      &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 60%;
+        margin: 2rem 0;
+      }
+
+      &__audio {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 30%;
+
+        span {
+          font-size: 0.9rem;
+          font-weight: 600;
+        }
+      }
+
+      &__flags {
+        display: flex;
+        gap: 1rem;
+
+        img {
+          width: 20%;
+          height: auto;
+          cursor: pointer;
+        }
+      }
+    }
+
+
+    .artwork-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .artwork-card-info,
+      .artwork-card-price {
+        border: 1px solid $color-line;
+      }
+
+      &__inner {
+        padding: 0.2rem 1.75rem;
+
+        .line__horizontal {
+          margin: 0 -1.75rem;
+        }
+      }
+
+      &__title {
+        font-size: 1.2rem;
+        font-weight: 400;
+        font-style: italic;
+      }
+
+      &__artist {
+        font-size: 0.8rem;
+        color: $color-muted;
+        margin-bottom: 0.3rem;
+      }
+
+      &__meta {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+
+        div {
+          display: flex;
+          gap: 1rem;
+          justify-content: flex-start;
+          padding: 0.15rem 0;
+        }
+
+        dt {
+          font-weight: 500;
+        }
+
+        span {
+          color: $color-primary-light;
+        }
+
+        p {
+          font-weight: 600;
+        }
+
+        dd {
+          margin: 0;
+          text-align: right;
+        }
+      }
+
+      &__price-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.8rem;
+      }
+
+      &__price-line {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        border-bottom: 1px solid $color-border;
+      }
+
+      &__price {
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      &__pay-info {
+        font-size: 0.75rem;
+        color: $color-muted;
+        text-align: center;
+      }
+
+      &__options {
+        margin: 0.7rem 0 1rem;
+
+        label {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          font-size: 0.8rem;
+          margin-bottom: 0.4rem;
+          cursor: pointer;
+
+          input {
+            width: 14px;
+            height: 14px;
+            border: 1px solid $color-border;
+          }
+        }
+      }
+
+      &__bullets {
+        margin: 1rem 2rem;
+        padding-left: 1rem;
+        list-style: disc;
+        font-size: 0.8rem;
+      }
+
+      &__tabs {
+        display: flex;
+        flex-wrap: wrap;
+
+        .tab {
+          width: 25%;
+          font-size: 1rem;
+          font-weight: 600;
+
+          span {
+            color: $color-primary-light;
+          }
+        }
+      }
+
+      &__tab-list {
+        margin: 0.7rem 2rem;
+        padding-left: 1rem;
+        list-style: disc;
+        font-size: 0.6rem;
+      }
+
+      &__footer-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin: 0.8rem 0;
+
+        .link-button {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        margin-top: 1rem;
+      }
+    }
+
+    .tab {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+
+      &--active {
+        border-bottom: 2px solid $color-dark;
+      }
+    }
+  }
+}
