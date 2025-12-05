@@ -67,15 +67,6 @@ button {
   cursor: pointer;
 }
 
-#notifications {
-  width: 100%;
-  color: #f7f7f7;
-  background-color: #222222;
-  text-align: center;
-  padding: 1rem 0;
-  font-size: 1.4rem;
-}
-
 .line__vertical {
   min-width: 1px;
   min-height: 100%;
@@ -85,21 +76,6 @@ button {
   min-width: 100%;
   min-height: 1px;
   background-color: #222222;
-}
-
-#breadcrumbs p {
-  display: flex;
-  margin: 0.8rem 4rem;
-  color: #999999;
-  text-transform: uppercase;
-}
-#breadcrumbs p img {
-  width: 1rem;
-  height: 1rem;
-  margin-right: 0.5rem;
-}
-#breadcrumbs p a, #breadcrumbs p span {
-  margin: 0 0.5rem;
 }
 
 #DetailsOeuvre {
